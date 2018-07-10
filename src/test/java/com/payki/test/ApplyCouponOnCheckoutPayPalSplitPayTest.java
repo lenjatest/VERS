@@ -1,0 +1,75 @@
+package com.paykickstart.test;
+
+import org.testng.annotations.Test;
+import java.math.RoundingMode;
+import java.net.MalformedURLException;
+import java.text.DecimalFormat;
+import java.util.Arrays;
+
+import com.paykickstart.common.WebDriverUtility;
+import com.paykickstart.items.Template;
+import com.paykickstart.pages.CheckoutPage;
+import com.paykickstart.pages.CouponPage;
+import com.paykickstart.pages.FunnelPage;
+import com.paykickstart.pages.ProductPage;
+import com.paykickstart.pages.RefundPage;
+import com.paykickstart.pages.StartPage;
+import com.paykickstart.pages.TaxProfilePage;
+
+public class ApplyCouponOnCheckoutPayPalSplitPayTest extends WebDriverUtility {
+	String successPage = new String("PayKickstart :: Edit Product");
+
+	@Test(invocationCount = 1)
+	public void ApplyCouponAlongWithTaxUsingPayPalBraintree() throws MalformedURLException, InterruptedException {
+		System.out.printf("Thread Id : %s%n", Thread.currentThread().getId());
+
+		start();
+
+		StartPage log = new StartPage(driver);
+		log.login();
+
+		TaxProfilePage taxPage = new TaxProfilePage(driver);
+		taxPage.createSalesTaxProfile();
+		String taxProfile = taxPage.checkIsTaxProfileCreated();
+
+		ProductPage product = new ProductPage(driver);
+		product.createCampaign();
+		product.createProductWithTaxProfile(taxProfile);
+
+		product.selectTemplate(Template.vienna);
+		String sameCampaign = product.sameCampaign;
+		CouponPage coup = new CouponPage(driver);
+		coup.openCouponPage();
+		coup.fillUpCouponPage(sameCampaign);
+		String kupon = coup.checkIsCouponCreated();
+
+		System.out.println("couponDiscount : " + kupon);
+		FunnelPage funnel = new FunnelPage(driver);
+		funnel.creteFunnel(sameCampaign);
+		funnel.overrideFunnelSettings();
+		funnel.getToCheckout();
+
+		CheckoutPage check = new CheckoutPage(driver);
+		check.payPalSplitWithCoupon(kupon);
+
+		RefundPage refund = new RefundPage(driver);
+		refund.openRefundPage();
+		double priceAfterDiscount = funnel.priceValue - (funnel.priceValue * (coup.coupDiscInt / 100));
+		System.out.println("coup.coupDiscInt " + coup.coupDiscInt);
+		System.out.println("priceAfterDiscount " + priceAfterDiscount);
+		double priceAfterDiscountAndTax = priceAfterDiscount + (priceAfterDiscount / 100) * taxPage.taxRateValue;
+		System.out.println("priceAfterDiscountAndTax " + priceAfterDiscountAndTax);
+		DecimalFormat df = new DecimalFormat("###.##");
+		df.setRoundingMode(RoundingMode.CEILING);
+		for (Number n : Arrays.asList(priceAfterDiscountAndTax)) {
+			Double a = n.doubleValue();
+			String expectedAmount = df.format(a);
+			System.out.println("expectedAmount " + expectedAmount);
+			String expectedAmountFinal = String.valueOf(expectedAmount).substring(0, 4);
+			coup.checkTransactionWithCouponIsSucessfull(sameCampaign, expectedAmountFinal);
+		}
+
+		driver.quit();
+	}
+
+}

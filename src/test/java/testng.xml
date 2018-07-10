@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="testng" verbose="1">
+  <test thread-count="5" name="PK_Autotests" preserve-order="true" enabled="true">
+    <classes>
+       <class name="com.paykickstart.test.CreditCardAuthNetCheckoutSplitPayTest"/>
+      <class name="com.paykickstart.test.CreateAffiliateLinkTest"/>
+      <class name="com.paykickstart.test.KillallChromeDriverInstances"/>
+      <class name="com.paykickstart.test.CreateSalesTaxProfileTest"/>
+      <class name="com.paykickstart.test.FreeTrialPayPalTest"/>
+      <class name="com.paykickstart.test.CreateProductTestAuthorizeNetCheckout"/>
+      <class name="com.paykickstart.test.CreateCustomTaxProfileTest"/>
+      <class name="com.paykickstart.test.CreateVATTaxProfileTest"/>
+      <class name="com.paykickstart.test.FreeTrialCouponPayPalTest"/>
+      <class name="com.paykickstart.test.FreeTrialAuthorizeNetTest"/>
+      <class name="com.paykickstart.test.TestLoginLogout"/>
+      <class name="com.paykickstart.test.EditCampaignTest"/>
+      <class name="com.paykickstart.test.BraintreeCCCheckoutSplitPayTest"/>
+      <class name="com.paykickstart.test.DeleteCouponTest"/>
+      <class name="com.paykickstart.test.ApplyCouponOnCheckoutCCTest"/>
+      <class name="com.paykickstart.test.FreeTrialCouponCCTest"/>
+      <class name="com.paykickstart.test.DiamondCheckoutPayPalNewVendorTest"/>
+      <class name="com.paykickstart.test.RefundCreditCardBraintreeTest"/>
+      <class name="com.paykickstart.test.LaunchMadnessCheckoutCCNewVendorTest"/>
+      <class name="com.paykickstart.test.ApplyCouponOnCheckoutCreditCardSplitPayTest"/>
+      <class name="com.paykickstart.test.PayPalCheckoutSplitPayTest"/>
+      <class name="com.paykickstart.test.CreditCardForestCheckoutTest"/>
+      <class name="com.paykickstart.test.DiamondCheckoutCCNewVendorTest"/>
+      <class name="com.paykickstart.test.RemoveCampaignTest"/>
+      <class name="com.paykickstart.test.RemoveFunnelBySpecificString"/>
+      <class name="com.paykickstart.test.FreeTrialStripeTest"/>
+      <class name="com.paykickstart.test.CreditCardCheckoutSplitPayTest"/>
+      <class name="com.paykickstart.test.FreeTrialBraintreeCCTest"/>
+      <class name="com.paykickstart.test.FreeTrialPaidAuthorizeNetTest"/>
+      <class name="com.paykickstart.test.ApplyCouponOnCheckoutPayPalTest"/>
+      <class name="com.paykickstart.test.CreateProductTestPayPalCheckout"/>
+      <class name="com.paykickstart.test.RefundCreditCardStripeTest"/>
+      <class name="com.paykickstart.test.CreditCardDuplicatePurchaseTest"/>
+      <class name="com.paykickstart.test.OverrideComissionsAffiliateTest"/>
+      <class name="com.paykickstart.test.ApplyCouponOnCheckoutPayPalBraintreeSplitPayTest"/>
+      <class name="com.paykickstart.test.FreeTrialPaidBraintreePayPalTest"/>
+      <class name="com.paykickstart.test.RemoveAllCampaignsTest"/>
+      <class name="com.paykickstart.test.CreateProductTestCreditCardCheckout"/>
+      <class name="com.paykickstart.test.LaunchMadnessCheckoutPayPalNewVendorTest"/>
+      <class name="com.paykickstart.test.RefundCreditCardAuthorizeNetTest"/>
+      <class name="com.paykickstart.test.FreeTrialPaidBraintreeCCTest"/>
+      <class name="com.paykickstart.test.CreateLeadCampaignWithMailChimpTest"/>
+      <class name="com.paykickstart.test.DisputeTransactionTest"/>
+      <class name="com.paykickstart.test.FreeTrialBraintreePayPalTest"/>
+      <class name="com.paykickstart.test.CreateCouponTest"/>
+      <class name="com.paykickstart.test.ApplyCouponOnCheckoutPayPalSplitPayTest"/>
+      <class name="com.paykickstart.test.PayPalBraintreeCheckoutSplitPayTest"/>
+      <class name="com.paykickstart.test.CreateProductBraintreeCCCheckoutTest"/>
+      <class name="com.paykickstart.test.FreeTrialPaidCouponPayPalTest"/>
+      <class name="com.paykickstart.test.RefundPayPalTest"/>
+      <class name="com.paykickstart.test.CreateRecurringProductPayPalCheckoutTest"/>
+      <class name="com.paykickstart.test.ManualTransactionRecurringCCTest"/>
+      <class name="com.paykickstart.test.FreeTrialPaidPayPalTest"/>
+      <class name="com.paykickstart.test.FreePaidTrialCouponCCTest"/>
+      <class name="com.paykickstart.test.CreateProductWithLeadCampaignTest"/>
+      <class name="com.paykickstart.test.CreateProductTestPayPalBraintreeCheckout"/>
+      <class name="com.paykickstart.test.VerifyUpdateCCDetails"/>
+      <class name="com.paykickstart.test.FreeTrialNoPaymentCollectedTest"/>
+      <class name="com.paykickstart.test.FreeTrialPaidStripeTest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
